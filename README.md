@@ -18,7 +18,6 @@ The pipeline is designed with **strict time-based splits** to avoid data leakage
   - [Dataset](#dataset)
   - [Evaluation Metric](#evaluation-metric)
     - [What Does `Retrieval Hit Rate@500` Mean?](#what-does-retrieval-hit-rate500-mean)
-- [\\text{HitRate@500}](#texthitrate500)
   - [Environment Setup](#environment-setup)
     - [Python environment](#python-environment)
   - [Running Commands](#running-commands)
@@ -89,13 +88,8 @@ Implicit-positive rule used in our runs:
 In other words:
 
 $$
-\text{HitRate@500}
-=
-\frac{
-\left|\{u: i_u^{\text{true}} \in \text{Top500}(u)\}\right|
-}{
-\left|\{u\}\right|
-}
+\text{HitRate@500}=\frac{
+\left|\{u: i_u^{\text{true}} \in \text{Top500}(u)\}\right|}{\left|\{u\}\right|}
 $$
 
 where:
