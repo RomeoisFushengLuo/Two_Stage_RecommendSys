@@ -1,0 +1,42 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# macOS / IDE
+.DS_Store
+.vscode/
+.idea/
+
+# Virtual environments
+.venv/
+venv/
+env/
+.env/
+
+# Local data and outputs
+data/
+src/data/
+outputs/
+src/outputs/
+
+# Large artifacts
+*.csv
+*.json.gz
+*.json
+*.parquet
+*.pkl
+*.pickle
+*.npz
+*.npy
+*.pt
+*.pth
+*.ckpt
+*.bin
+
+# Logs
+logs/
+*.log
+
+# Jupyter
+.ipynb_checkpoints/
