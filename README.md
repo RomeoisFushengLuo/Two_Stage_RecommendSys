@@ -17,7 +17,8 @@ The pipeline is designed with **strict time-based splits** to avoid data leakage
     - [Stage 2 — Reranking (LightGBM/MLP)](#stage-2--reranking-lightgbmmlp)
   - [Dataset](#dataset)
   - [Evaluation Metric](#evaluation-metric)
-    - [Retrieval Hit Rate@500 Mean?](#retrieval-hit-rate500-mean)
+    - [What Does `Retrieval Hit Rate@500` Mean?](#what-does-retrieval-hit-rate500-mean)
+- [\\text{HitRate@500}](#texthitrate500)
   - [Environment Setup](#environment-setup)
     - [Python environment](#python-environment)
   - [Running Commands](#running-commands)
@@ -80,26 +81,28 @@ Implicit-positive rule used in our runs:
 
 ---
 ## Evaluation Metric
-### Retrieval Hit Rate@500 Mean?
+
+### What Does `Retrieval Hit Rate@500` Mean?
 
 `Retrieval Hit Rate@500` measures the proportion of evaluated user queries for which the user's true next-interaction item appears in the Top-500 candidate items retrieved by FAISS.
 
 In other words:
 
 $$
-\text{HitRate@500} =
+\text{HitRate@500}
+=
 \frac{
-\#\{u: i_u^{\text{true}} \in \text{Top500}(u)\}
+\left|\{u: i_u^{\text{true}} \in \text{Top500}(u)\}\right|
 }{
-\#\{u\}
+\left|\{u\}\right|
 }
 $$
 
 where:
 
-- \(u\): a user, which can also be viewed as a query.
-- \(\text{Top500}(u)\): the 500 candidate items retrieved by the Two-Tower model + FAISS for user \(u\).
-- \(i_u^{\text{true}}\): the item that user \(u\) actually interacted with next in the validation/test set.
+- $u$: a user, which can also be viewed as a query.
+- $\text{Top500}(u)$: the 500 candidate items retrieved by the Two-Tower model + FAISS for user $u$.
+- $i_u^{\text{true}}$: the item that user $u$ actually interacted with next in the validation/test set.
 
 Therefore, this metric answers the question:
 
@@ -114,6 +117,7 @@ Recommended: conda env (macOS friendly)
 conda create -n llm python=3.10 -y
 conda activate llm
 pip install pandas numpy tqdm scikit-learn torch lightgbm
+conda install -y -c conda-forge llvm-openmp faiss-cpu
 ```
 
 ## Running Commands
